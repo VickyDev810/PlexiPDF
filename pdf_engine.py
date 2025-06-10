@@ -51,8 +51,9 @@ class PDFEngine:
                 return
 
     # ---------- Saving -----------------------------------------------------
-    def save(self, out_path: str):
-        self.doc.save(out_path, incremental=True, encryption=fitz.PDF_ENCRYPT_KEEP)
+    def save(self, path: str, incremental: bool = False):
+        self.doc.save(path, incremental=incremental)
+
 
     # ---------- Add Text -----------------------------------------------------
 

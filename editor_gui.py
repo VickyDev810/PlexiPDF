@@ -144,10 +144,12 @@ class PDFEditor(QMainWindow):
         if not out:
             return
         try:
-            self.engine.save(out)
+            # 🔥 Force a full save instead of incremental
+            self.engine.save(out, incremental=False)
             QMessageBox.information(self, "Saved", "PDF saved successfully.")
         except Exception as e:
             QMessageBox.critical(self, "Save Error", f"Could not save:\n{e}")
+
 
     # ===== Page navigation & rendering ====================================
     def show_page(self, index: int):
